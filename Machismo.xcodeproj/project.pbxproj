@@ -120,6 +120,7 @@
 				E15E636E205CE4AA0036AE45 /* Main.storyboard */,
 				E15E6371205CE4AA0036AE45 /* Assets.xcassets */,
 				E15E6373205CE4AA0036AE45 /* LaunchScreen.storyboard */,
+				E15E6376205CE4AA0036AE45 /* Info.plist */,
 			);
 			path = Machismo;
 			sourceTree = "<group>";
@@ -163,7 +164,6 @@
 			children = (
 				E15E6368205CE4AA0036AE45 /* AppDelegate.h */,
 				E15E6369205CE4AA0036AE45 /* AppDelegate.m */,
-				E15E6376205CE4AA0036AE45 /* Info.plist */,
 				E15E6377205CE4AA0036AE45 /* main.m */,
 			);
 			path = "Supporting Files";
