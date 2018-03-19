@@ -19,6 +19,7 @@
 		E1A2DEA4205D143400DD27F3 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A2DEA3205D143400DD27F3 /* PlayingCard.m */; };
 		E1A2DEA7205D29DB00DD27F3 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A2DEA6205D29DB00DD27F3 /* Deck.m */; };
 		E1A2DEAA205D2E1500DD27F3 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A2DEA9205D2E1500DD27F3 /* PlayingCardDeck.m */; };
+		E1A2DEAD205D3C0300DD27F3 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A2DEAC205D3C0300DD27F3 /* CardMatchingGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		E1A2DEA6205D29DB00DD27F3 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		E1A2DEA8205D2E1500DD27F3 /* PlayingCardDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		E1A2DEA9205D2E1500DD27F3 /* PlayingCardDeck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		E1A2DEAB205D3C0300DD27F3 /* CardMatchingGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
+		E1A2DEAC205D3C0300DD27F3 /* CardMatchingGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				E1A2DEA6205D29DB00DD27F3 /* Deck.m */,
 				E1A2DEA8205D2E1500DD27F3 /* PlayingCardDeck.h */,
 				E1A2DEA9205D2E1500DD27F3 /* PlayingCardDeck.m */,
+				E1A2DEAB205D3C0300DD27F3 /* CardMatchingGame.h */,
+				E1A2DEAC205D3C0300DD27F3 /* CardMatchingGame.m */,
 			);
 			name = Model;
 			path = ../Model;
@@ -306,6 +311,7 @@
 				E15E6378205CE4AA0036AE45 /* main.m in Sources */,
 				E15E636A205CE4AA0036AE45 /* AppDelegate.m in Sources */,
 				E1A2DEA4205D143400DD27F3 /* PlayingCard.m in Sources */,
+				E1A2DEAD205D3C0300DD27F3 /* CardMatchingGame.m in Sources */,
 				E1A2DEAA205D2E1500DD27F3 /* PlayingCardDeck.m in Sources */,
 				E1A2DEA7205D29DB00DD27F3 /* Deck.m in Sources */,
 				E1A2DE9E205D0E4800DD27F3 /* Card.m in Sources */,
