@@ -21,9 +21,13 @@
 @implementation ViewController
 
 - (CardMatchingGame *)game {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                          usingDeck:[self createDeck]];
+    if (!_game) _game = [self createGame];
     return _game;
+}
+
+- (CardMatchingGame *)createGame {
+    return [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                             usingDeck:[self createDeck]];
 }
 
 - (Deck *)createDeck {
@@ -33,6 +37,11 @@
 - (IBAction)touchCardButton:(UIButton *)sender {
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
+}
+
+- (IBAction)touchRedealButton:(UIButton *)sender {
+    self.game = [self createGame];
     [self updateUI];
 }
 
