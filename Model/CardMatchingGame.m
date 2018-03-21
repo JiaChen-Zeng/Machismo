@@ -8,6 +8,7 @@
 
 #import "CardMatchingGame.h"
 #import "PlayingCard.h"
+#import "ChoosingResult.h"
 
 @interface CardMatchingGame()
 
@@ -19,6 +20,12 @@
 @end
 
 @implementation CardMatchingGame
+
+NSString *const RESULT_TYPE_FLIP_UP = @"flip up";
+NSString *const RESULT_TYPE_FLIP_DOWN = @"flip down";
+NSString *const RESULT_TYPE_MATCH = @"match";
+NSString *const RESULT_TYPE_MISMATCH = @"mismatch";
+NSString *const RESULT_TYPE_DISABLE = @"disable";
 
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck
@@ -52,14 +59,17 @@ static const int MISMATCH_PANELTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
-- (void)chooseCardAtIndex:(NSUInteger)index {
+- (ChoosingResult *)chooseCardAtIndex:(NSUInteger)index {
     self.started = YES;
     
+    NSInteger oldScore = self.score;
+    
     Card *card = [self cardAtIndex:index];
-    if (card.isMatched) return;
+    if (card.isMatched) return [[ChoosingResult alloc] init:nil type:RESULT_TYPE_DISABLE scoreDelta:self.score - oldScore];
     
     if (card.isChosen) {
         [self setCardChosen:card chosen:NO];
+        return [[ChoosingResult alloc] init:@[card] type:RESULT_TYPE_FLIP_DOWN scoreDelta:self.score - oldScore];
     } else {
         [self setCardChosen:card chosen:YES];
         
@@ -69,24 +79,31 @@ static const int COST_TO_CHOOSE = 1;
                 if (!(chosenCard.isChosen && !chosenCard.isMatched)) continue;
                 
                 [chosenCards addObject:chosenCard];
+                [self setCardChosen:chosenCard chosen:NO];
             }
             
             int matchScore = [PlayingCard match:chosenCards];
+            
             if (matchScore) {
                 self.score += matchScore * MATCH_BONUS;
                 
                 for (Card *chosenCard in chosenCards) {
                     chosenCard.matched = YES;
                 }
+                
+                return [[ChoosingResult alloc] init:chosenCards type:RESULT_TYPE_MATCH scoreDelta:self.score - oldScore];
             } else {
                 self.score -= MISMATCH_PANELTY;
+                
+                return [[ChoosingResult alloc] init:chosenCards type:RESULT_TYPE_MISMATCH scoreDelta:self.score - oldScore];
             }
             
-            for (Card *chosenCard in chosenCards) {
-                [self setCardChosen:chosenCard chosen:NO];
-            }
+        } else {
+            return [[ChoosingResult alloc] init:@[card] type:RESULT_TYPE_FLIP_UP scoreDelta:self.score - oldScore];
         }
     }
+    
+    return nil;
 }
 
 - (void)setCardChosen:(Card *)card

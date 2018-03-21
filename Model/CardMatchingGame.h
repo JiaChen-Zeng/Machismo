@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Deck.h"
+#import "ChoosingResult.h"
 
 @interface CardMatchingGame : NSObject
+
+extern NSString *const RESULT_TYPE_FLIP_UP;
+extern NSString *const RESULT_TYPE_FLIP_DOWN;
+extern NSString *const RESULT_TYPE_MATCH;
+extern NSString *const RESULT_TYPE_MISMATCH;
+extern NSString *const RESULT_TYPE_DISABLE;
 
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
@@ -20,7 +27,7 @@
 @property (nonatomic) NSUInteger choosingCount;
 @property (nonatomic, readonly) BOOL started;
 
-- (void)chooseCardAtIndex:(NSUInteger)index;
+- (ChoosingResult *)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @end

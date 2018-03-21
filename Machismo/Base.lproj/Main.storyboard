@@ -169,7 +169,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Re-deal">
-                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="redealButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ooz-6Z-uii"/>
@@ -182,7 +182,15 @@
                                     <segment title="2"/>
                                     <segment title="3"/>
                                 </segments>
+                                <color key="tintColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-cp-YKw">
+                                <rect key="frame" x="16" y="352" width="280" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -190,6 +198,7 @@
                     <connections>
                         <outlet property="ChoosingCountSegmentedControl" destination="5wW-C1-0D7" id="Cn8-cg-RtF"/>
                         <outlet property="choosingCountLabel" destination="1wE-jB-BJo" id="bGz-sG-wPz"/>
+                        <outlet property="resultLabel" destination="2Qf-cp-YKw" id="7Hz-3D-mRw"/>
                         <outlet property="scoreLabel" destination="KQg-Lx-F7m" id="vYM-pq-6tk"/>
                         <outletCollection property="cardButtons" destination="qea-1W-6ra" id="caW-Cd-Etq"/>
                         <outletCollection property="cardButtons" destination="ZUl-nw-EHO" id="Xow-8X-jhy"/>

@@ -17,15 +17,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *ChoosingCountSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *choosingCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
 @end
 
 @implementation ViewController
-
-//- (CardMatchingGame *)game {
-//    if (!_game) _game = [self createGame];
-//    return _game;
-//}
 
 - (CardMatchingGame *)createGame {
     return [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
@@ -41,38 +37,51 @@
     if (!self.game) self.game = [self createGame];
     
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
-    [self.game chooseCardAtIndex:chosenButtonIndex];
-    [self updateUI];
-    
-    self.ChoosingCountSegmentedControl.enabled = !self.game.started;
+    ChoosingResult *result = [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI:result];
 }
 
 - (IBAction)redealButtonTouched:(UIButton *)sender {
     self.game = nil;
     
-    [self updateUI];
-    
-    self.ChoosingCountSegmentedControl.enabled = YES;
+    [self resetUI];
 }
 
-- (void)updateUI {
-    if (self.game) {
-        for (int i = 0; i < self.cardButtons.count; ++i) {
-            UIButton *cardButton = self.cardButtons[i];
-            Card *card = [self.game cardAtIndex:i];
-            [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-            [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-            cardButton.enabled = !card.isMatched;
-        }
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
-    } else {
-        for (UIButton *cardButton in self.cardButtons) {
-            [cardButton setTitle:@"" forState:UIControlStateNormal];
-            [cardButton setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-            cardButton.enabled = YES;
-        }
-        self.scoreLabel.text = @"Score: 0";
+- (void)updateUI:(ChoosingResult *)result {
+    for (int i = 0; i < self.cardButtons.count; ++i) {
+        UIButton *cardButton = self.cardButtons[i];
+        Card *card = [self.game cardAtIndex:i];
+        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
     }
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+    self.ChoosingCountSegmentedControl.enabled = !self.game.started;
+    
+    NSString *resultText = nil;
+    if ([result.type isEqualToString:RESULT_TYPE_FLIP_UP]) {
+        resultText = @"{cards} flipped up.";
+    } else if ([result.type isEqualToString:RESULT_TYPE_FLIP_DOWN]) {
+        resultText = @"{cards} flipped down.";
+    } else if ([result.type isEqualToString:RESULT_TYPE_MATCH]) {
+        resultText = @"Matched {cards} for {score} points.";
+    } else if ([result.type isEqualToString:RESULT_TYPE_MISMATCH]) {
+        resultText = @"{cards} don't match! {score} points penalty!";
+    }
+    self.resultLabel.text = [@"Result: " stringByAppendingString:[[resultText stringByReplacingOccurrencesOfString:@"{cards}" withString:[self contentsForCards:result.cards]] stringByReplacingOccurrencesOfString:@"{score}" withString:[NSString stringWithFormat:@"%ld", (long)result.scoreDelta]]];
+}
+
+- (void)resetUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        [cardButton setTitle:@"" forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+        cardButton.enabled = YES;
+    }
+    
+    self.scoreLabel.text = @"Score: 0";
+    self.ChoosingCountSegmentedControl.enabled = YES;
+    self.resultLabel.text = @"Result:";
 }
 
 - (NSString *)titleForCard:(Card *)card {
@@ -81,6 +90,10 @@
 
 - (UIImage *)backgroundImageForCard:(Card *)card {
     return [UIImage imageNamed:card.isChosen || card.isMatched ? @"cardfront" : @"cardback"];
+}
+
+- (NSString *)contentsForCards:(NSArray *)cards {
+    return [[cards valueForKey:@"contents"] componentsJoinedByString:@" "];
 }
 
 @end
