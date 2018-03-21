@@ -13,9 +13,11 @@
 
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck;
+                        usingDeck:(Deck *)deck
+                    choosingCount:(NSUInteger)choosingCount;
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic) NSUInteger choosingCount;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;

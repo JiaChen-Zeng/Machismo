@@ -15,6 +15,8 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UISlider *choosingCountSlider;
+@property (weak, nonatomic) IBOutlet UILabel *choosingCountLabel;
 
 @end
 
@@ -27,22 +29,29 @@
 
 - (CardMatchingGame *)createGame {
     return [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                             usingDeck:[self createDeck]];
+                                             usingDeck:[self createDeck]
+                                         choosingCount:self.choosingCountSlider.value];
 }
 
 - (Deck *)createDeck {
     return [[PlayingCardDeck alloc] init];
 }
 
-- (IBAction)touchCardButton:(UIButton *)sender {
+- (IBAction)cardButtonTouched:(UIButton *)sender {
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
 }
 
-- (IBAction)touchRedealButton:(UIButton *)sender {
+- (IBAction)redealButtonTouched:(UIButton *)sender {
     self.game = [self createGame];
     [self updateUI];
+}
+
+- (IBAction)choosingCountSliderChanged:(UISlider *)sender {
+    int roundedValue = (int)round(sender.value);
+    sender.value = roundedValue;
+    self.choosingCountLabel.text = [NSString stringWithFormat:@"Choose Count: %d", roundedValue];
 }
 
 - (void)updateUI {
@@ -57,11 +66,11 @@
 }
 
 - (NSString *)titleForCard:(Card *)card {
-    return card.isChosen ? card.contents : @"";
+    return card.isChosen || card.isMatched ? card.contents : @"";
 }
 
 - (UIImage *)backgroundImageForCard:(Card *)card {
-    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+    return [UIImage imageNamed:card.isChosen || card.isMatched ? @"cardfront" : @"cardback"];
 }
 
 @end

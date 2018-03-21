@@ -12,15 +12,18 @@
 
 @synthesize suit = _suit;
 
-- (int)match:(NSArray *)otherCards {
++ (int)match:(NSArray *)cards {
     int score = 0;
     
-    if (otherCards.count == 1) {
-        PlayingCard *card = [otherCards firstObject];
-        if (self.rank == card.rank) {
-            score = 4;
-        } else if ([self.suit isEqualToString:card.suit]) {
-            score = 1;
+    for (int i = 0; i < cards.count; ++i) {
+        for (int j = i + 1; j < cards.count; ++j) {
+            PlayingCard *card = cards[i];
+            PlayingCard *otherCard = cards[j];
+            if (card.rank == otherCard.rank) {
+                score += 4;
+            } else if ([card.suit isEqualToString:otherCard.suit]) {
+                score += 1;
+            }
         }
     }
     
