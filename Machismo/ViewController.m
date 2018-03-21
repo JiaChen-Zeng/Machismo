@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *ChoosingCountSegmentedControl;
-@property (weak, nonatomic) IBOutlet UILabel *choosingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
 @end
