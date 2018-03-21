@@ -11,6 +11,7 @@
 
 @interface ChoosingResult : NSObject
 
+// designated initializer
 - (instancetype)init:(NSArray *)cards
                 type:(NSString *)type
           scoreDelta:(NSInteger)scoreDelta;
