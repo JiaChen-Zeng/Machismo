@@ -15,7 +15,7 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UISlider *choosingCountSlider;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *ChoosingCountSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *choosingCountLabel;
 
 @end
@@ -30,7 +30,7 @@
 - (CardMatchingGame *)createGame {
     return [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                              usingDeck:[self createDeck]
-                                         choosingCount:self.choosingCountSlider.value];
+                                         choosingCount:[self.ChoosingCountSegmentedControl titleForSegmentAtIndex:self.ChoosingCountSegmentedControl.selectedSegmentIndex].integerValue];
 }
 
 - (Deck *)createDeck {
@@ -46,12 +46,6 @@
 - (IBAction)redealButtonTouched:(UIButton *)sender {
     self.game = [self createGame];
     [self updateUI];
-}
-
-- (IBAction)choosingCountSliderChanged:(UISlider *)sender {
-    int roundedValue = (int)round(sender.value);
-    sender.value = roundedValue;
-    self.choosingCountLabel.text = [NSString stringWithFormat:@"Choose Count: %d", roundedValue];
 }
 
 - (void)updateUI {
