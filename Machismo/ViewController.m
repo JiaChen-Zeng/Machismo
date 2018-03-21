@@ -22,10 +22,10 @@
 
 @implementation ViewController
 
-- (CardMatchingGame *)game {
-    if (!_game) _game = [self createGame];
-    return _game;
-}
+//- (CardMatchingGame *)game {
+//    if (!_game) _game = [self createGame];
+//    return _game;
+//}
 
 - (CardMatchingGame *)createGame {
     return [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
@@ -38,25 +38,41 @@
 }
 
 - (IBAction)cardButtonTouched:(UIButton *)sender {
+    if (!self.game) self.game = [self createGame];
+    
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
+    
+    self.ChoosingCountSegmentedControl.enabled = !self.game.started;
 }
 
 - (IBAction)redealButtonTouched:(UIButton *)sender {
-    self.game = [self createGame];
+    self.game = nil;
+    
     [self updateUI];
+    
+    self.ChoosingCountSegmentedControl.enabled = YES;
 }
 
 - (void)updateUI {
-    for (int i = 0; i < self.cardButtons.count; ++i) {
-        UIButton *cardButton = self.cardButtons[i];
-        Card *card = [self.game cardAtIndex:i];
-        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-        cardButton.enabled = !card.isMatched;
+    if (self.game) {
+        for (int i = 0; i < self.cardButtons.count; ++i) {
+            UIButton *cardButton = self.cardButtons[i];
+            Card *card = [self.game cardAtIndex:i];
+            [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+            [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+            cardButton.enabled = !card.isMatched;
+        }
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+    } else {
+        for (UIButton *cardButton in self.cardButtons) {
+            [cardButton setTitle:@"" forState:UIControlStateNormal];
+            [cardButton setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+            cardButton.enabled = YES;
+        }
+        self.scoreLabel.text = @"Score: 0";
     }
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
 - (NSString *)titleForCard:(Card *)card {

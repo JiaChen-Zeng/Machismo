@@ -14,6 +14,7 @@
 @property (nonatomic, readwrite) NSInteger score;
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
 @property (nonatomic) NSUInteger chosenCount;
+@property (nonatomic, readwrite) BOOL started;
 
 @end
 
@@ -52,6 +53,8 @@ static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
 - (void)chooseCardAtIndex:(NSUInteger)index {
+    self.started = YES;
+    
     Card *card = [self cardAtIndex:index];
     if (card.isMatched) return;
     

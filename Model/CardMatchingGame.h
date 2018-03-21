@@ -18,6 +18,7 @@
 
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic) NSUInteger choosingCount;
+@property (nonatomic, readonly) BOOL started;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
