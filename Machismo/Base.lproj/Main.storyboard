@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,9 +30,8 @@
                                     <action selector="cardButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xk3-05-bUB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-Lx-F7m">
-                                <rect key="frame" x="16" y="439" width="96" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-Lx-F7m">
+                                <rect key="frame" x="16" y="439" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -157,20 +157,11 @@
                                     <action selector="cardButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0f-yG-M3Q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-vW-1Yc">
-                                <rect key="frame" x="232" y="439" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Re-deal">
-                                    <color key="titleColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="redealButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ooz-6Z-uii"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-cp-YKw">
-                                <rect key="frame" x="16" y="385" width="280" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-cp-YKw">
+                                <rect key="frame" x="16" y="385" width="288" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Gba-Eb-96E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -373,9 +364,8 @@
                                     <action selector="cardButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VSV-FB-x2p"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5wW-C1-0D7">
-                                <rect key="frame" x="125" y="435" width="99" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5wW-C1-0D7">
+                                <rect key="frame" x="102.5" y="435" width="115" height="29"/>
                                 <segments>
                                     <segment title="2"/>
                                     <segment title="3"/>
@@ -384,9 +374,31 @@
                                 </segments>
                                 <color key="tintColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-vW-1Yc">
+                                <rect key="frame" x="240" y="437" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Re-deal">
+                                    <color key="titleColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="redealButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ooz-6Z-uii"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="NVu-j7-4ab" firstAttribute="bottom" secondItem="S8k-vW-1Yc" secondAttribute="bottom" constant="22" id="FTs-Nn-8sf"/>
+                            <constraint firstItem="NVu-j7-4ab" firstAttribute="bottom" secondItem="KQg-Lx-F7m" secondAttribute="bottom" constant="20" id="Lxf-wU-ItH"/>
+                            <constraint firstItem="NVu-j7-4ab" firstAttribute="bottom" secondItem="5wW-C1-0D7" secondAttribute="bottom" constant="17" id="OcE-d1-Q1F"/>
+                            <constraint firstItem="NVu-j7-4ab" firstAttribute="trailing" secondItem="S8k-vW-1Yc" secondAttribute="trailing" constant="16" id="RhD-ie-vRn"/>
+                            <constraint firstItem="KQg-Lx-F7m" firstAttribute="leading" secondItem="NVu-j7-4ab" secondAttribute="leading" constant="16" id="YYX-2L-ESS"/>
+                            <constraint firstItem="2Qf-cp-YKw" firstAttribute="width" secondItem="NVu-j7-4ab" secondAttribute="width" constant="-32" id="Zyg-vt-tQJ"/>
+                            <constraint firstItem="5wW-C1-0D7" firstAttribute="width" secondItem="NVu-j7-4ab" secondAttribute="width" multiplier="33:92" id="hqQ-pk-7pX"/>
+                            <constraint firstItem="5wW-C1-0D7" firstAttribute="centerX" secondItem="NVu-j7-4ab" secondAttribute="centerX" id="pzG-Ce-bw4"/>
+                            <constraint firstItem="2Qf-cp-YKw" firstAttribute="centerX" secondItem="NVu-j7-4ab" secondAttribute="centerX" id="rhd-tU-cEd"/>
+                            <constraint firstItem="5wW-C1-0D7" firstAttribute="top" secondItem="2Qf-cp-YKw" secondAttribute="bottom" constant="8" id="y5h-7T-X5k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NVu-j7-4ab"/>
                     </view>
                     <connections>
                         <outlet property="ChoosingCountSegmentedControl" destination="5wW-C1-0D7" id="Cn8-cg-RtF"/>
