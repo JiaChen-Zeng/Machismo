@@ -10,4 +10,16 @@
 
 @interface SetGame : NSObject
 
+extern NSString *const SYMBOL_TRIANGLE;
+extern NSString *const SYMBOL_CIRCLE;
+extern NSString *const SYMBOL_SQUARE;
+
+extern NSString *const SHADING_SOLID;
+extern NSString *const SHADING_GRAY;
+extern NSString *const SHADING_OPEN;
+
+extern NSString *const COLOR_RED;
+extern NSString *const COLOR_GREEN;
+extern NSString *const COLOR_PURPLE;
+
 @end

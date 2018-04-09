@@ -10,50 +10,13 @@
 #import "PlayingCard.h"
 #import "ChoosingResult.h"
 
-@interface CardMatchingGame()
-
-@property (nonatomic, readwrite) NSInteger score;
-@property (strong, nonatomic) NSMutableArray *cards; // of Card
-@property (nonatomic) NSUInteger chosenCount;
-@property (nonatomic, readwrite) BOOL started;
-
-@end
-
 @implementation CardMatchingGame
 
-NSString *const RESULT_TYPE_FLIP_UP = @"flip up";
+NSString *const RESULT_TYPE_FLIP_UP   = @"flip up";
 NSString *const RESULT_TYPE_FLIP_DOWN = @"flip down";
-NSString *const RESULT_TYPE_MATCH = @"match";
-NSString *const RESULT_TYPE_MISMATCH = @"mismatch";
-NSString *const RESULT_TYPE_DISABLE = @"disable";
-
-- (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck
-                    choosingCount:(NSUInteger)choosingCount {
-    self = [super init];
-    if (!self || !deck) return nil;
-    
-    for (int i = 0; i < count; ++i) {
-        [self.cards addObject:[deck drawRandomCard]];
-    }
-    
-    self.choosingCount = 2;
-    self.choosingCount = choosingCount;
-    self.chosenCount = 0;
-    
-    return self;
-}
-
-- (NSMutableArray *)cards {
-    if (!_cards) _cards = [[NSMutableArray alloc] init];
-    return _cards;
-}
-
-- (void)setChoosingCount:(NSUInteger)choosingCount {
-    if ([self.cards count] < choosingCount || choosingCount < 2) return;
-    
-    _choosingCount = choosingCount;
-}
+NSString *const RESULT_TYPE_MATCH     = @"match";
+NSString *const RESULT_TYPE_MISMATCH  = @"mismatch";
+NSString *const RESULT_TYPE_DISABLE   = @"disable";
 
 static const int MISMATCH_PANELTY = 2;
 static const int MATCH_BONUS = 4;
@@ -114,11 +77,6 @@ static const int COST_TO_CHOOSE = 1;
     }
     
     card.chosen = chosen;
-}
-
-- (Card *)cardAtIndex:(NSUInteger)index {
-    return index < [self.cards count] ? self.cards[index]
-                                      : nil;
 }
 
 @end

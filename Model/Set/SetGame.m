@@ -8,6 +8,22 @@
 
 #import "SetGame.h"
 
+@interface SetGame()
+
+@end
+
 @implementation SetGame
+
+NSString *const SYMBOL_TRIANGLE = @"▲";
+NSString *const SYMBOL_CIRCLE   = @"●";
+NSString *const SYMBOL_SQUARE   = @"■";
+
+NSString *const SHADING_SOLID   = @"solid";
+NSString *const SHADING_GRAY    = @"gray";
+NSString *const SHADING_OPEN    = @"open";
+
+NSString *const COLOR_RED       = @"red";
+NSString *const COLOR_GREEN     = @"green";
+NSString *const COLOR_PURPLE    = @"purple";
 
 @end

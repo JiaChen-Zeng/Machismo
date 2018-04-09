@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E136140A207B1221000CD45F /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = E1361409207B1221000CD45F /* Game.m */; };
 		E15112B120637CE500C01544 /* ChoosingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E15112B020637CE500C01544 /* ChoosingResult.m */; };
 		E15112BA207B063C00C01544 /* SetGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E15112B9207B063C00C01544 /* SetGame.m */; };
 		E15112BE207B063C00C01544 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E15112BD207B063C00C01544 /* SetCard.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E1361408207B1221000CD45F /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		E1361409207B1221000CD45F /* Game.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		E15112AF20637CE500C01544 /* ChoosingResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosingResult.h; sourceTree = "<group>"; };
 		E15112B020637CE500C01544 /* ChoosingResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosingResult.m; sourceTree = "<group>"; };
 		E15112B8207B063C00C01544 /* SetGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetGame.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				E1A2DEA6205D29DB00DD27F3 /* Deck.m */,
 				E15112AF20637CE500C01544 /* ChoosingResult.h */,
 				E15112B020637CE500C01544 /* ChoosingResult.m */,
+				E1361408207B1221000CD45F /* Game.h */,
+				E1361409207B1221000CD45F /* Game.m */,
 			);
 			name = Model;
 			path = ../Model;
@@ -343,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E136140A207B1221000CD45F /* Game.m in Sources */,
 				E15E636D205CE4AA0036AE45 /* ViewController.m in Sources */,
 				E15112B120637CE500C01544 /* ChoosingResult.m in Sources */,
 				E15E6378205CE4AA0036AE45 /* main.m in Sources */,
