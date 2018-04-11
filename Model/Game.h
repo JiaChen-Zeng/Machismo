@@ -11,6 +11,16 @@
 
 @interface Game : NSObject
 
+extern NSString *const RESULT_TYPE_FLIP_UP;
+extern NSString *const RESULT_TYPE_FLIP_DOWN;
+extern NSString *const RESULT_TYPE_MATCH;
+extern NSString *const RESULT_TYPE_MISMATCH;
+extern NSString *const RESULT_TYPE_DISABLE;
+
++ (NSUInteger)mismatchPanelty;
++ (NSUInteger)matchBonus;
++ (NSUInteger)costToChoose;
+
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck
@@ -25,5 +35,7 @@
 
 - (ChoosingResult *)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
+- (void)setCardChosen:(Card *)card
+               chosen:(BOOL)chosen;
 
 @end

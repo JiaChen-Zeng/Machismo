@@ -8,10 +8,6 @@
 
 #import "SetGame.h"
 
-@interface SetGame()
-
-@end
-
 @implementation SetGame
 
 NSString *const SYMBOL_TRIANGLE = @"▲";
@@ -25,5 +21,17 @@ NSString *const SHADING_OPEN    = @"open";
 NSString *const COLOR_RED       = @"red";
 NSString *const COLOR_GREEN     = @"green";
 NSString *const COLOR_PURPLE    = @"purple";
+
++ (NSUInteger)mismatchPanelty {
+    return 5;
+}
+
++ (NSUInteger)matchBonus {
+    return 10;
+}
+
++ (NSUInteger)costToChoose {
+    return 1;
+}
 
 @end

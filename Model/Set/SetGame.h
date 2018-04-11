@@ -6,9 +6,9 @@
 //  Copyright © 2018年 彩月葵. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Game.h"
 
-@interface SetGame : NSObject
+@interface SetGame : Game
 
 extern NSString *const SYMBOL_TRIANGLE;
 extern NSString *const SYMBOL_CIRCLE;

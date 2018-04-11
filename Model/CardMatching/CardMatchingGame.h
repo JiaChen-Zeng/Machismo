@@ -10,10 +10,4 @@
 
 @interface CardMatchingGame : Game
 
-extern NSString *const RESULT_TYPE_FLIP_UP;
-extern NSString *const RESULT_TYPE_FLIP_DOWN;
-extern NSString *const RESULT_TYPE_MATCH;
-extern NSString *const RESULT_TYPE_MISMATCH;
-extern NSString *const RESULT_TYPE_DISABLE;
-
 @end
